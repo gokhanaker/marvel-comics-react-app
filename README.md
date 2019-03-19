@@ -2,7 +2,7 @@
 
 This project includes some javascript tools/libraries/frameworks
 
-React: a javascript front-end framework. I used React to interact with public marvel comics api
+React.js: a javascript front-end framework. I used React to interact with public marvel comics api
 
 Babel.js: a javascript compiler for browsers. It provides javascript code to be compatible with browsers.
 

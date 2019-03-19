@@ -8,7 +8,7 @@ Babel.js: a javascript compiler for browsers. It provides javascript code to be 
 
 Parcel: a javascript bundler.
 
-live-server: a javascript library for which provides a development server with live reload capability.
+live-server: a javascript library for which provides a development server with live reload capability. You can run the project with npm run dev command in the command line
 
 crypto-js: a javascript library for encrypting, hashing. I used crypto-js javascript library to make hash md5 which is used for marvel api callings.
 

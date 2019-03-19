@@ -1,0 +1,26 @@
+
+body {
+    text-align: center;
+    font-size: 18px;
+    padding: 2.5%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+#search-bar{
+    margin: 15px;
+}
+
+#info{
+    display: inline-block;
+    width: 600px;
+    margin: 20px;
+}
+
+.comics {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    cursor: pointer;
+}

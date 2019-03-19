@@ -1,8 +1,8 @@
 # marvel-comics-react-app
 
-This project includes some javascript tools/libraries/frameworks
+It is a web application which is built mainly with React.js. It interacts with public marvel comics api. This project includes some javascript tools/libraries/frameworks
 
-React.js: a javascript front-end framework. I used React to interact with public marvel comics api
+React.js: a javascript front-end framework.
 
 Babel.js: a javascript compiler for browsers. It provides javascript code to be compatible with browsers.
 

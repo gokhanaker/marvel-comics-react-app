@@ -1,17 +1,16 @@
-import React, {Component} from 'react';
-// importing other react components
+import React, {Fragment, Component} from 'react';
 import Info from './Info';
 import Comics from './Comics';
 
-// to use marvel api you need to get a private and public key
-// reference is: https://developer.marvel.com/
+// To use marvel api you need to get a private and public key
+// Reference is: https://developer.marvel.com/
 var PRIV_KEY = '48af838ae9b8f46c248878cf32db00c7ebe8e3c6';
 var PUBLIC_KEY = 'b234161539619aee8f067f5a132ec1f3';
 
-// to authorize your api request you need to use timestamp and hash code
-// reference is: https://developer.marvel.com/documentation/authorization
+// To authorize your api request you need to use timestamp and hash code
+// Reference is: https://developer.marvel.com/documentation/authorization
 var ts = new Date().getTime();
-// I used CryptoJS javascript library for hashing
+// Used CryptoJS javascript library for hashing
 var CryptoJS = require("crypto-js");
 var hash = CryptoJS.MD5(ts + PRIV_KEY + PUBLIC_KEY).toString();
 
@@ -24,8 +23,9 @@ const API_ADDRESS_COMICS_PART_2 = '/comics?&ts=' + ts + '&apikey=' + PUBLIC_KEY 
 
 class App extends Component {
 
-    // initialized component state
-    state = {superHeroId: 0,
+    // Initializing component state
+    state = {
+             superHeroId: 0,
              superHeroName: null,
              superHeroDescription: null,
              superHeroImage: null, 
@@ -34,30 +34,34 @@ class App extends Component {
 
     constructor(props){
         super(props);
-        // binding functions which use setState() method
+        // Binding js functions 
         this.updateSuperHeroName = this.updateSuperHeroName.bind(this);
         this.searchSuperHero = this.searchSuperHero.bind(this);
     }
 
     // onChange DOM event occurs when the value of an element has been changed
     updateSuperHeroName = event => {
-        console.log('event.target.value', event.target.value);
+        // console.log('event.target.value', event.target.value);
         this.setState({superHeroName: event.target.value});
     }
 
     // onKeyPress DOM event occurs when user presses a key on his keyboard
     handleKeyPress = event =>{
+        // If user pressed Enter key
         if(event.key === 'Enter'){
             this.searchSuperHero();
         }
     }
 
     searchSuperHero(){
+        // ES6 Destructuring
+        const {superHeroId, superHeroName} = this.state;
+
         // console.log("API", API_ADDRESS);
-        fetch(`${API_ADDRESS_CHARACTER_NAME_PART_1}` + this.state.superHeroName + `${API_ADDRESS_CHARACTER_NAME_PART_2}`)
+        fetch(`${API_ADDRESS_CHARACTER_NAME_PART_1} + ${superHeroName} + ${API_ADDRESS_CHARACTER_NAME_PART_2}`)
         .then(response => response.json())
         .then(json => {
-            console.log("json", json);
+            // console.log("json", json);
 
             // if there is no such a marvel hero in the fetched results
             if(json.data.results.length == 0){
@@ -78,7 +82,7 @@ class App extends Component {
                 this.setState({superHeroImage: fetchedImage});
 
                 // it fetches comics of a superhero from marvel api
-                fetch(`${API_ADDRESS_COMICS_PART_1}` + this.state.superHeroId + `${API_ADDRESS_COMICS_PART_2}`)
+                fetch(`${API_ADDRESS_COMICS_PART_1} + ${superHeroId} + ${API_ADDRESS_COMICS_PART_2}`)
                 .then(response => response.json())
                 .then(json => {
                     console.log('comics', json.data.results);
@@ -94,30 +98,36 @@ class App extends Component {
       }
 
     render(){
-        console.log("this.state", this.state);
+        // console.log("this.state", this.state);
+
+        const {superHeroName, superHeroDescription, superHeroImage, superHeroComics} = this.state;
+
         return (
-            <div id = "searchSuperHero" >
+            <Fragment>
                 <h2>Marvel Superheroes Website</h2>
                 <p> You can use the search bar below to see character information and comics of superhero </p>
                 <input 
-                    id = 'search-bar' 
-                    placeholder = 'search a marvel superhero'
-                    onChange = {this.updateSuperHeroName}
-                    onKeyPress = {this.handleKeyPress}
+                    id='search-bar' 
+                    placeholder='search a marvel superhero'
+                    onChange={this.updateSuperHeroName}
+                    onKeyPress={this.handleKeyPress}
                 />
-                <button onClick = {this.searchSuperHero}> Search</button>
+                <button onClick={this.searchSuperHero}> Search</button>
                 <p>(spider-man, iron man, hulk, thor, wolverine, daredevil, captain america, silver surfer,
                     punisher, doctor strange, black panther, quicksilver etc.)
                 </p>
-
-                <Info superHeroName= {this.state.superHeroName}
-                      superHeroDescription = {this.state.superHeroDescription}
-                      superHeroImage = {this.state.superHeroImage} />
-
-                <Comics superHeroComics = {this.state.superHeroComics}/>
-            </div>
-            )
-        }
+                
+                <Info 
+                    superHeroName={superHeroName}
+                    superHeroDescription={superHeroDescription}
+                    superHeroImage={superHeroImage}
+                 />
+                <Comics 
+                    superHeroComics={superHeroComics}
+                />
+            </Fragment>
+        )
+    }
 }
 
 export default App;

@@ -1,17 +1,20 @@
 import React from 'react';
 
-const Info = ({superHeroName, superHeroDescription, superHeroImage} ) =>{
+// Stateless functional component as a presentational component
+// ES6 Destructuring passed prop
+const Info = ({superHeroName, superHeroDescription, superHeroImage} ) => {
 
-    // if there is no such a superhero in the marvel api then display nothing
+    // If there is no such a superhero in the marvel api then display nothing
+    // Conditional rendering
     if (!superHeroName || !superHeroDescription) 
         return null;
 
     return(
-        <div id = 'info'>
+        <div id='info'>
             <h3>Marvel Superhero: {superHeroName} </h3>
             <p> {superHeroDescription} </p>
-            <img src = {superHeroImage} 
-                style = {{
+            <img src={superHeroImage} 
+                style={{
                     width: 300,
                     height: 300
                  }}>

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing App Component <App />  it renders 1`] = `
+Array [
+  <h2>
+    Marvel Superheroes Website
+  </h2>,
+  <p>
+     You can use the search bar below to see character information and comics of superhero 
+  </p>,
+  <input
+    id="search-bar"
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="search a marvel superhero"
+  />,
+  <button
+    onClick={[Function]}
+  >
+     Search
+  </button>,
+  <p>
+    (spider-man, iron man, hulk, thor, wolverine, daredevil, captain america, silver surfer, punisher, doctor strange, black panther, quicksilver etc.)
+  </p>,
+]
+`;
+
+exports[`Testing App Component renders the App title 1`] = `
+Array [
+  <h2>
+    Marvel Superheroes Website
+  </h2>,
+  <p>
+     You can use the search bar below to see character information and comics of superhero 
+  </p>,
+  <input
+    id="search-bar"
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="search a marvel superhero"
+  />,
+  <button
+    onClick={[Function]}
+  >
+     Search
+  </button>,
+  <p>
+    (spider-man, iron man, hulk, thor, wolverine, daredevil, captain america, silver surfer, punisher, doctor strange, black panther, quicksilver etc.)
+  </p>,
+]
+`;

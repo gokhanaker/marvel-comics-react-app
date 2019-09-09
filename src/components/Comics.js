@@ -21,11 +21,11 @@ const Comics = ({superHeroComics}) =>{
                     <div key={'comic_'+i}
                          className='comics'>
                         
-                        <p key={'title_' +i}>
+                        <p key={'title_'+i}>
                             {comic.title}
                         </p>           
                         <img
-                            key={'image_' +i} 
+                            key={'image_'+i} 
                             src ={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} 
                             alt="comic-image" 
                             style = {{

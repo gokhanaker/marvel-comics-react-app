@@ -18,13 +18,21 @@ const Comics = ({superHeroComics}) =>{
                 superHeroComics.map((comic, i) => {
 
                 return (
-                    <div className='comics'>
-                        <p key={'title_' +i}>{comic.title}</p>           
-                        <img key={'image_' +i} src ={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} 
-                        alt="comic-image" style = {{
-                            width: 200,
-                            height: 200
-                        }}/>
+                    <div key={'comic_'+i}
+                         className='comics'>
+                        
+                        <p key={'title_' +i}>
+                            {comic.title}
+                        </p>           
+                        <img
+                            key={'image_' +i} 
+                            src ={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} 
+                            alt="comic-image" 
+                            style = {{
+                                width: 200,
+                                height: 200
+                            }}
+                        />
                     </div>
                     )
                 })

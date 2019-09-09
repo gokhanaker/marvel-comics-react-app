@@ -55,13 +55,12 @@ class App extends Component {
 
     searchSuperHero(){
         // ES6 Destructuring
-        const {superHeroId, superHeroName} = this.state;
+        const { superHeroName} = this.state;
 
-        // console.log("API", API_ADDRESS);
-        fetch(`${API_ADDRESS_CHARACTER_NAME_PART_1} + ${superHeroName} + ${API_ADDRESS_CHARACTER_NAME_PART_2}`)
+        fetch(`${API_ADDRESS_CHARACTER_NAME_PART_1}` + superHeroName + `${API_ADDRESS_CHARACTER_NAME_PART_2}`)
         .then(response => response.json())
         .then(json => {
-            // console.log("json", json);
+             console.log("json", json);
 
             // if there is no such a marvel hero in the fetched results
             if(json.data.results.length == 0){
@@ -80,9 +79,11 @@ class App extends Component {
 
                 var fetchedImage = json.data.results[0].thumbnail.path + '.' + json.data.results[0].thumbnail.extension;
                 this.setState({superHeroImage: fetchedImage});
-
-                // it fetches comics of a superhero from marvel api
-                fetch(`${API_ADDRESS_COMICS_PART_1} + ${superHeroId} + ${API_ADDRESS_COMICS_PART_2}`)
+                
+                // Destructuing again
+                const { superHeroId } = this.state;
+                // It fetches comics of a superhero from marvel api
+                fetch(`${API_ADDRESS_COMICS_PART_1}` + superHeroId + `${API_ADDRESS_COMICS_PART_2}`)
                 .then(response => response.json())
                 .then(json => {
                     console.log('comics', json.data.results);
@@ -99,7 +100,6 @@ class App extends Component {
 
     render(){
         // console.log("this.state", this.state);
-
         const {superHeroName, superHeroDescription, superHeroImage, superHeroComics} = this.state;
 
         return (

@@ -4,15 +4,15 @@ import Comics from './Comics';
 
 // To use marvel api you need to get a private and public key
 // Reference is: https://developer.marvel.com/
-var PRIV_KEY = '48af838ae9b8f46c248878cf32db00c7ebe8e3c6';
-var PUBLIC_KEY = 'b234161539619aee8f067f5a132ec1f3';
+const PRIV_KEY = '48af838ae9b8f46c248878cf32db00c7ebe8e3c6';
+const PUBLIC_KEY = 'b234161539619aee8f067f5a132ec1f3';
 
 // To authorize your api request you need to use timestamp and hash code
 // Reference is: https://developer.marvel.com/documentation/authorization
-var ts = new Date().getTime();
+const ts = new Date().getTime();
 // Used CryptoJS javascript library for hashing
-var CryptoJS = require("crypto-js");
-var hash = CryptoJS.MD5(ts + PRIV_KEY + PUBLIC_KEY).toString();
+const CryptoJS = require("crypto-js");
+const hash = CryptoJS.MD5(ts + PRIV_KEY + PUBLIC_KEY).toString();
 
 const API_ADDRESS_CHARACTER_NAME_PART_1 = 'http://gateway.marvel.com/v1/public/characters?name='
 const API_ADDRESS_CHARACTER_NAME_PART_2 = '&ts=' + ts + '&apikey=' + PUBLIC_KEY + '&hash=' +hash;
@@ -49,6 +49,7 @@ class App extends Component {
     handleKeyPress = event =>{
         // If user pressed Enter key
         if(event.key === 'Enter'){
+
             this.searchSuperHero();
         }
     }
@@ -80,7 +81,7 @@ class App extends Component {
                 var fetchedImage = json.data.results[0].thumbnail.path + '.' + json.data.results[0].thumbnail.extension;
                 this.setState({superHeroImage: fetchedImage});
                 
-                // Destructuing again
+                // Destructuring again
                 const { superHeroId } = this.state;
                 // It fetches comics of a superhero from marvel api
                 fetch(`${API_ADDRESS_COMICS_PART_1}` + superHeroId + `${API_ADDRESS_COMICS_PART_2}`)

@@ -24,3 +24,4 @@ const Info = ({superHeroName, superHeroDescription, superHeroImage} ) => {
 }
 
 export default Info;
+
